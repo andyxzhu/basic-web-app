@@ -15,11 +15,16 @@ export default function QueryProcessor(query: string): string {
 
   if (query.toLowerCase().includes("plus")) {  
     const regex = /\b\d+\b/g;
-    const hits = query.match(regex);
 
-    if (hits && hits.length == 2) { 
-      return (parseInt(hits[0])+parseInt(hits[1])).toString();
+    const hits = query.match(regex);
+    var out = 0;
+    if (hits) { 
+      for (let i=0; i<hits.length; i++) {
+        const num = parseInt(hits[i]);
+        var += out;
+      }
     }
+    return out.toString();
   }
 
   if (query.toLowerCase().includes("minus")) {  
