@@ -15,7 +15,7 @@ export default function QueryProcessor(query: string): string {
 
   if (query.toLowerCase().includes("plus")) {  
     const regex = /\b\d+\b/g;
-    const hits = query.match(plusRegex);
+    const hits = query.match(regex);
 
     if (hits) { 
       return (parseInt(hits[1])+parseInt(hits[2])).toString();
@@ -24,7 +24,7 @@ export default function QueryProcessor(query: string): string {
 
   if (query.toLowerCase().includes("multiplied")) {  
     const regex = /\b\d+\b/g;
-    const hits = query.match(plusRegex);
+    const hits = query.match(regex);
 
     if (hits) { 
       return (parseInt(hits[1])*parseInt(hits[2])).toString();
