@@ -22,16 +22,20 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
-  if (query.toLowerCase().includes("largest")) {  
-    const maxRegex = /^(\d+)\s*,\s*(\d+)\s*,\s*(\d+)$/;
+  if (query.toLowerCase().includes("max")) {  
+    const regex = /\b\d+\b/g;
 
-    const hits = query.match(maxRegex);
-
+    const hits = query.match(regex);
+    const max = 0
     if (hits) { 
-      return (Math.max(parseInt(hits[1]), parseInt(hits[2]), parseInt(hits[3]))).toString();
+      for (int i=0; i<hits.length; i++) {
+        const num = parseInt(hits[i]);
+        max = Math.max(num, max);
+      }
+      return max;
     }
   }
-
+  
 
   
 
