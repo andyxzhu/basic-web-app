@@ -17,8 +17,8 @@ export default function QueryProcessor(query: string): string {
     const regex = /\b\d+\b/g;
     const hits = query.match(regex);
 
-    if (hits) { 
-      return (parseInt(hits[1])+parseInt(hits[2])).toString();
+    if (hits & hits.length == 2) { 
+      return (parseInt(hits[0])+parseInt(hits[1])).toString();
     }
   }
 
@@ -26,8 +26,8 @@ export default function QueryProcessor(query: string): string {
     const regex = /\b\d+\b/g;
     const hits = query.match(regex);
 
-    if (hits) { 
-      return (parseInt(hits[1])*parseInt(hits[2])).toString();
+    if (hits && hits.length == 2) { 
+      return (parseInt(hits[0])*parseInt(hits[1])).toString();
     }
   }
   
