@@ -41,7 +41,7 @@ export default function QueryProcessor(query: string): string {
         const num = parseInt(hits[i]);
         max = Math.max(num, max);
       }
-      return max;
+      return max.toString();
     }
   }
   
