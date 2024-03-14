@@ -17,8 +17,9 @@ export default function QueryProcessor(query: string): string {
     const plusRegex = /(\d+)\s*plus\s*(\d+)/i;
     const hits = query.match(plusRegex);
 
-    
-    return (parseInt(hits[1])+parseInt(hits[2])).toString();
+    if (hits) { 
+      return (parseInt(hits[1])+parseInt(hits[2])).toString();
+    }
 
   }
   
