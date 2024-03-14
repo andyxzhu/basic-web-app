@@ -18,14 +18,7 @@ export default function QueryProcessor(query: string): string {
     const hits = query.match(plusRegex);
 
     
-    return parseInt(hits[1])+parseInt(hits[2])
-
-  }
-
-  if (query.toLowerCase().includes("largest")) {  
-    const plusRegex = /(\d+)\s*plus\s*(\d+)/i;
-    hits = query.match(plusRegex);
-    return parseInt(hits[1])+parseInt(hits[2])
+    return (parseInt(hits[1])+parseInt(hits[2])).toString();
 
   }
   
