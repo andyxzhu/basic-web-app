@@ -21,7 +21,7 @@ export default function QueryProcessor(query: string): string {
     if (hits) { 
       for (let i=0; i<hits.length; i++) {
         const num = parseInt(hits[i]);
-        var += out;
+        out += num;
       }
     }
     return out.toString();
