@@ -28,7 +28,7 @@ export default function QueryProcessor(query: string): string {
     const hits = query.match(regex);
     const max = 0
     if (hits) { 
-      for (int i=0; i<hits.length; i++) {
+      for (let i=0; i<hits.length; i++) {
         const num = parseInt(hits[i]);
         max = Math.max(num, max);
       }
@@ -36,6 +36,18 @@ export default function QueryProcessor(query: string): string {
     }
   }
   
+  if (query.toLowerCase().includes("square and a cube")) {  
+    const regex = /\b\d+\b/g;;
+
+    const hits = query.match(regex);
+    
+    if (hits) { 
+      for (let i=0; i<hits.length; i++) {
+        const num = parseInt(hits[i]);
+        if (Math.sqrt(num).isInteger() && Math.cbrt(num).isInteger()) return num.toString();
+      }
+    }
+  }
 
   
 
