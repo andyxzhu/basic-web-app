@@ -22,6 +22,15 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  if (query.toLowerCase().includes("minus")) {  
+    const regex = /\b\d+\b/g;
+    const hits = query.match(regex);
+
+    if (hits && hits.length == 2) { 
+      return (parseInt(hits[0])-parseInt(hits[1])).toString();
+    }
+  }
+
   if (query.toLowerCase().includes("power")) {  
     const regex = /\b\d+\b/g;
     const hits = query.match(regex);
@@ -65,6 +74,33 @@ export default function QueryProcessor(query: string): string {
         if (Number.isInteger(Math.sqrt(num)) && Number.isInteger(Math.cbrt(num))) return num.toString();
       }
     }
+  }
+
+
+
+
+  function isPrime(num) { // returns boolean
+    if (num <= 1) return false; // negatives
+    if (num % 2 == 0 && num > 2) return false; // even numbers
+    const s = Math.sqrt(num); // store the square to loop faster
+    for(let i = 3; i <= s; i += 2) { // start from 3, stop at the square, increment in twos
+        if(num % i === 0) return false; // modulo shows a divisor was found
+    }
+    return true;
+  }
+  
+  if (query.toLowerCase().includes("primes")) {  
+    const regex = /\b\d+\b/g;
+
+    const hits = query.match(regex);
+    const out = [];
+    if (hits) { 
+      for (let i=0; i<hits.length; i++) {
+        const num = parseInt(hits[i]);
+        if (isPrime(num)) out.push(num);
+      }
+    }
+    return out.join(', ');
   }
 
   
