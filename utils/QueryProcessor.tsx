@@ -20,8 +20,19 @@ export default function QueryProcessor(query: string): string {
     if (hits) { 
       return (parseInt(hits[1])+parseInt(hits[2])).toString();
     }
-
   }
+
+  if (query.toLowerCase().includes("largest")) {  
+    const maxRegex = /^(\d+)\s*,\s*(\d+)\s*,\s*(\d+)$/;
+
+    const hits = query.match(maxRegex);
+
+    if (hits) { 
+      return (Math.max(parseInt(hits[1]), parseInt(hits[2]), parseInt(hits[3]))).toString();
+    }
+  }
+
+
   
 
 
