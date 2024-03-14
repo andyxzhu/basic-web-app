@@ -79,7 +79,7 @@ export default function QueryProcessor(query: string): string {
 
 
 
-  function isPrime(num) { // returns boolean
+  function isPrime(num: number) { // returns boolean
     if (num <= 1) return false; // negatives
     if (num % 2 == 0 && num > 2) return false; // even numbers
     const s = Math.sqrt(num); // store the square to loop faster
