@@ -22,6 +22,15 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  if (query.toLowerCase().includes("power")) {  
+    const regex = /\b\d+\b/g;
+    const hits = query.match(regex);
+
+    if (hits && hits.length == 2) { 
+      return (parseInt(hits[0])**parseInt(hits[1])).toString();
+    }
+  }
+
   if (query.toLowerCase().includes("multiplied")) {  
     const regex = /\b\d+\b/g;
     const hits = query.match(regex);
