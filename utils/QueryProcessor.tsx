@@ -53,7 +53,7 @@ export default function QueryProcessor(query: string): string {
     if (hits) { 
       for (let i=0; i<hits.length; i++) {
         const num = parseInt(hits[i]);
-        if (Math.sqrt(num).isInteger() && Math.cbrt(num).isInteger()) return num.toString();
+        if (Number.isInteger(Math.sqrt(num)) && Number.isInteger(Math.cbrt(num))) return num.toString();
       }
     }
   }
