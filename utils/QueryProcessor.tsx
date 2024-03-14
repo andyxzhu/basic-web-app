@@ -14,7 +14,7 @@ export default function QueryProcessor(query: string): string {
   }
 
   if (query.toLowerCase().includes("plus")) {  
-    const plusRegex = /(\d+)\s*plus\s*(\d+)/i;
+    const regex = /\b\d+\b/g;
     const hits = query.match(plusRegex);
 
     if (hits) { 
@@ -22,11 +22,20 @@ export default function QueryProcessor(query: string): string {
     }
   }
 
+  if (query.toLowerCase().includes("multiplied")) {  
+    const regex = /\b\d+\b/g;
+    const hits = query.match(plusRegex);
+
+    if (hits) { 
+      return (parseInt(hits[1])*parseInt(hits[2])).toString();
+    }
+  }
+  
   if (query.toLowerCase().includes("max")) {  
     const regex = /\b\d+\b/g;
 
     const hits = query.match(regex);
-    const max = 0
+    var max = 0
     if (hits) { 
       for (let i=0; i<hits.length; i++) {
         const num = parseInt(hits[i]);
@@ -37,7 +46,7 @@ export default function QueryProcessor(query: string): string {
   }
   
   if (query.toLowerCase().includes("square and a cube")) {  
-    const regex = /\b\d+\b/g;;
+    const regex = /\b\d+\b/g;
 
     const hits = query.match(regex);
     
