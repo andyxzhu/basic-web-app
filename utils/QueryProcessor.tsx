@@ -31,7 +31,7 @@ export default function QueryProcessor(query: string): string {
     }
   }
   
-  if (query.toLowerCase().includes("max")) {  
+  if (query.toLowerCase().includes("largest")) {  
     const regex = /\b\d+\b/g;
 
     const hits = query.match(regex);
